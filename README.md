@@ -1,4 +1,12 @@
+
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+
 # QR Service
+---
+
+## 📦 Official Release
+
+This repository is now officially released under the MIT License. See the LICENSE file for details.
 
 A simple microservice for generating QR codes that link to product pages.  
 Built with **Node.js**, **Express**, **TypeScript**, and the [`qrcode`](https://www.npmjs.com/package/qrcode) library.
@@ -9,7 +17,7 @@ Built with **Node.js**, **Express**, **TypeScript**, and the [`qrcode`](https://
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/your-org/qr-service.git
+git clone https://github.com/jkthysse/qr-code-generator.git
 cd qr-service
 ```
 
@@ -35,6 +43,7 @@ node dist/index.js
 
 ---
 
+
 ## 🛠️ API
 
 ### Generate QR Code
@@ -57,8 +66,33 @@ GET http://localhost:3000/qr?productId=12345
 
 Returns a QR code pointing to:
 ```
-https://yourdomain.com/product/12345
+https://cms.thysse.org/product/12345
 ```
+
+---
+
+## 📖 API Documentation (Swagger)
+
+Interactive API docs are available via Swagger UI:
+
+- [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+
+You can view, test, and explore all endpoints here.
+
+---
+
+## 🔗 Postman Integration
+
+You can import the OpenAPI (Swagger) spec directly into Postman:
+
+1. Start the server (`npx ts-node src/index.ts` or `npm run dev`).
+2. In Postman, click **Import** > **Link** and enter:
+	```
+	http://localhost:3000/swagger.json
+	```
+3. Postman will create a collection with all documented endpoints for automation and testing.
+
+---
 
 ---
 
