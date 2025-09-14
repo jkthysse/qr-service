@@ -8,27 +8,6 @@ const app = express();
 // Setup Swagger UI and spec endpoint
 setupSwagger(app);
 
-  /**
- * @openapi
- * /qr:
- *   get:
- *     summary: Generate a QR code for a product
- *     parameters:
- *       - in: query
- *         name: productId
- *         schema:
- *           type: string
- *         required: true
- *         description: The product ID
- *     responses:
- *       200:
- *         description: QR code image
- *         content:
- *           image/png:
- *             schema:
- *               type: string
- *               format: binary
- */
 app.get("/qr", async (req, res) => {
   try {
     const productId = req.query.productId as string;

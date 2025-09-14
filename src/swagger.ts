@@ -14,7 +14,7 @@ const swaggerOptions = {
       description: "API to generate QR codes for products",
     },
   },
-  apis: ["./src/index.ts"], // Path to the API docs
+  apis: ["./src/index.ts", "./src/qrService.ts"], // Path to the API docs
 };
 
 export const swaggerSpec = swaggerJsdoc(swaggerOptions);
