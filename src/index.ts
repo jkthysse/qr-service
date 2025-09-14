@@ -1,6 +1,6 @@
 
 import express from "express";
-import QRCode from "qrcode";
+import { generateProductQR } from "./qrService";
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
@@ -62,16 +62,17 @@ app.get("/swagger", (req, res) => {
  *               format: binary
  */
 app.get("/qr", async (req, res) => {
-  const { productId } = req.query;
-
-  const productProtocol = "https";
-  const productApiUrl = "cms.thysse.org";
-  const productApiEndpoint = "product";
-  const url = `${productProtocol}://${productApiUrl}/${productApiEndpoint}/${productId}`;
-
-  const qr = await QRCode.toBuffer(url);
-  res.set("Content-Type", "image/png");
-  res.send(qr);
+  try {
+    const productId = req.query.productId as string;
+    if (!productId) {
+      return res.status(400).json({ error: "Missing required query parameter: productId" });
+    }
+    const qr = await generateProductQR(productId);
+    res.set("Content-Type", "image/png");
+    res.send(qr);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || "Failed to generate QR code" });
+  }
 });
 
 app.listen(3000, () => console.log("QR service running on port 3000"));
