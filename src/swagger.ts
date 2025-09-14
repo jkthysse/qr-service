@@ -1,5 +1,4 @@
-// swagger.ts
-// Swagger configuration and setup (Single Responsibility Principle)
+// Swagger configuration and setup
 
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
@@ -14,11 +13,24 @@ const swaggerOptions = {
       description: "API to generate QR codes for products",
     },
   },
-  apis: ["./src/index.ts", "./src/qrService.ts"], // Path to the API docs
+  apis: ["./src/index.ts", "./src/qrService.ts", "./src/swagger.ts"], // Path to the API docs
 };
 
 export const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
+/**
+ * @openapi
+ * /swagger:
+ *   get:
+ *     summary: Get the OpenAPI specification in JSON format
+ *     responses:
+ *       200:
+ *         description: OpenAPI spec in JSON
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ */
 export function setupSwagger(app: Express) {
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   app.get("/swagger", (req, res) => {
