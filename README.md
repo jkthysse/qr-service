@@ -8,8 +8,7 @@
 
 This repository is now officially released under the MIT License. See the LICENSE file for details.
 
-A simple microservice for generating QR codes that link to product pages.  
-Built with **Node.js**, **Express**, **TypeScript**, and the [`qrcode`](https://www.npmjs.com/package/qrcode) library.
+A simple microservice for generating QR codes that link to product pages.  Built with **Node.js**, **Express**, **TypeScript**, and the [`qrcode`](https://www.npmjs.com/package/qrcode) library.
 
 ---
 
@@ -17,7 +16,7 @@ Built with **Node.js**, **Express**, **TypeScript**, and the [`qrcode`](https://
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/jkthysse/qr-code-generator.git
+git clone https://github.com/jkthysse/qr-service.git
 cd qr-service
 ```
 
